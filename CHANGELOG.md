@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [Unreleased]
+
+Adds a new `wang_tile_picker` module which can automatically choose a tile from a `WangSet` given edge/corner color constraints, so map generators no longer have to pick terrain tiles by hand. `find_wang_tile_candidates()` returns every tile plus the rotation/flip needed to satisfy the constraints (empty and partial constraints are supported), and `find_wang_tile()` picks one of the equally valid candidates at random, weighted by caller supplied per-tile weights and reproducible via a random seed. Invalid colors, duplicate tile IDs, malformed or all-zero Wang IDs, and unsupported WangSet types are reported with dedicated exceptions.
+
 ## [2.2.9] - 2025-01-23
 
 Fixes a bug where object templates would cause an error when used inside of TileSet. This occurs when using an object template to define collision details on a tile within a tileset. See #82.
